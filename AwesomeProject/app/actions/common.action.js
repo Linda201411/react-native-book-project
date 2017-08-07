@@ -15,3 +15,12 @@ export function changeEditStatus() {
         }
     }
 }
+
+export function resetEditStatus() {
+    return {
+        type: 'RESET_EDITSTATUS',
+        payload: {
+            val: new Date().getUTCMilliseconds()
+        }
+    }
+}

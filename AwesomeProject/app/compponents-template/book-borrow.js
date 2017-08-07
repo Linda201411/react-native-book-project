@@ -21,13 +21,15 @@ import BookNoData from './../components-cell/book-nodata'
 import BookItem from './../components-cell/book-borrow-item'
 import storage from 'store2';
 import RNBottomSheet from 'react-native-bottom-sheet';
+import { changeEditStatus, resetEditStatus } from '../actions/common.action'
 @connect((store) => {
   return {
     BookBorrowList: store.bookBorrowReducer.BookBorrowList,
     Opearation: store.bookBorrowReducer.Opearation,
     permission: store.accountReducer.permission,
     Flag: store.commonReducer.Flag,
-    EditStatus: store.commonReducer.EditStatus
+    EditStatus: store.commonReducer.EditStatus,
+    ResetStatus: store.commonReducer.ResetStatus,
   }
 })
 
@@ -56,6 +58,11 @@ export default class BookList extends Component {
     if (this.props.EditStatus !== nextProps.EditStatus) {
       this.setState({
         isEdit: !this.state.isEdit
+      })
+    }
+    if (this.props.ResetStatus !== nextProps.ResetStatus) {
+      this.setState({
+        isEdit: false,
       })
     }
   }
@@ -148,7 +155,8 @@ export default class BookList extends Component {
             text: '继续', onPress: () => {
               RemoveBookBorrowList(data).then((res) => {
                 Toast.success('删除成功', 1);
-                this.props.dispatch(changeData());
+                this.props.dispatch(changeData())
+                this.props.dispatch(resetEditStatus());
               })
             }
           },
