@@ -19,16 +19,15 @@ class BookSearchText extends Component {
     const { navigate } = this.props.navigation;
     navigate('Search');
   }
+  _goToScanner=()=>{
+     const { navigate } = this.props.navigation;
+    navigate('Scanner');
+  }
   render() {
     var BookName = storage.session('BookName');
     BookName = BookName == null ? "search" : BookName;
     return (
       <View style={Styles.headView}>
-        {/* <Icon
-          style={Styles.scanIcon}
-          name="crop-free"
-          size={25}
-          color={Themes.color} /> */}
         <TouchableOpacity
           style={Styles.searchView}
           onPress={this._onFocusSearch}>
@@ -37,6 +36,11 @@ class BookSearchText extends Component {
             size={20} />
           <Text>{BookName}</Text>
         </TouchableOpacity>
+        <Icon onPress={this._goToScanner}
+          style={Styles.scanIcon}
+          name="crop-free"
+          size={25}
+          color={Themes.color} />
       </View>
     );
   }
