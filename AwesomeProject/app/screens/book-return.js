@@ -20,14 +20,14 @@ class ReturnIcon extends Component {
             <Icon
               name="assignment-return"
               size={20}
-              color='white' />
+              color={this.props.color} />
             <Badge dot style={{ position: 'absolute', right: 5, top: 2 }}></Badge>
           </View>
           :
           <Icon
             name="assignment-return"
             size={20}
-            color='white' />}
+            color={this.props.color} />}
       </View>
     )
   }
@@ -35,8 +35,11 @@ class ReturnIcon extends Component {
 
 export default class BookReturn extends Component {
   static navigationOptions = ({ navigation }) => ({
-    tabBarLabel: '还书',
-    tabBarIcon: <ReturnIcon navigation={navigation} />
+    tabBarIcon:({ tintColor }) =>
+    <View style={{alignItems:'center'}}>
+      <ReturnIcon navigation={navigation} color={tintColor}/>
+      <Text style={{ color: tintColor }}>还书</Text>
+    </View>
   });
   render() {
     return (

@@ -12,10 +12,10 @@ import { getPermission } from '../actions/account.action'
   }
 })
 
-class HeadInfo extends Component{
-  render(){
+class HeadInfo extends Component {
+  render() {
     return (
-      <Text style={{paddingLeft:10}}>{this.props.permission.RealName}</Text>
+      <Text style={{ paddingLeft: 10 }}>{this.props.permission.RealName}</Text>
     )
   }
 }
@@ -24,10 +24,14 @@ class HeadInfo extends Component{
 export default class UserInfo extends Component {
   static navigationOptions = ({ navigation }) => ({
     tabBarLabel: '我的',
-    tabBarIcon: <Icon
-      name="person"
-      size={20}
-      color='white' />,
+    tabBarIcon: ({ tintColor }) =>
+      <View style={{ alignItems: 'center' }}>
+        <Icon
+          name="person"
+          size={20}
+          color={tintColor} />
+        <Text style={{ color: tintColor }}>我的</Text>
+      </View>,
     headerTitle: <HeadInfo />,
     // headerRight: (
     //   <UserLogout navigation={navigation} />)

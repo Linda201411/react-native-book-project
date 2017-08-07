@@ -10,11 +10,14 @@ import AppIntroScreen from './screens/appIntro-screen';
 import BookAboutScreen from './screens/book-about-screen';
 import { connect } from 'react-redux'
 import { getPermission, checkViewIntro } from './actions/account.action'
+import { SureToExistApp } from './actions/common.action'
 import TakePhoto from './compponents-template/take-photo';
+import BookSearchResultScreen from './screens/book-search-result-screen';
 
 @connect((store) => {
   return {
     permission: store.accountReducer.permission,
+    globalCount: store.commonReducer.globalCount
   }
 })
 
@@ -86,8 +89,11 @@ const CreateRootNavigator = (IsAuthened = true, IsAdmin) => {
     BookAboutScreen: {
       screen: BookAboutScreen
     },
-    TakePhoto:{
+    TakePhoto: {
       screen: TakePhoto
+    },
+    BookSearchResultScreen: {
+      screen: BookSearchResultScreen
     }
   }, {
       cardStyle: {

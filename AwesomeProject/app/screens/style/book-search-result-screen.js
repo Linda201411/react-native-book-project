@@ -19,20 +19,12 @@ const Styles = StyleSheet.create({
     searchView: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
         borderBottomWidth: 1,
         borderBottomColor: Themes.color,
         marginBottom: 10,
         paddingTop: 5,
         paddingBottom: 5
-    },
-    searchText:{
-        flex: 1,
-        flexDirection: 'row',
-    },
-    clearIcon:{
-        width:50,
-        alignItems:'flex-end'
     }
 });
 

@@ -47,7 +47,7 @@ export default class BookAll extends Component {
       NoMoreData: false,
       disable: false,
       isModalVisible: true,
-      isProgressVisible:true
+      isProgressVisible: true
     };
   }
   componentWillMount() {
@@ -57,6 +57,7 @@ export default class BookAll extends Component {
     this._search();
   }
   componentWillReceiveProps(nextProps) {
+    debugger;
     if (this.props.Flag !== nextProps.Flag) {
       this._search();
     }
@@ -165,11 +166,11 @@ export default class BookAll extends Component {
   render() {
     return (
       <View style={Styles.all}>
-        <BookModal 
-        OverTimeCount={this.props.OverTimeCount} 
-        isVisible={this.state.isModalVisible}
-        onClose={this._onClose}
-        ToBookReturn={this._toBookReturn} />
+        <BookModal
+          OverTimeCount={this.props.OverTimeCount}
+          isVisible={this.state.isModalVisible}
+          onClose={this._onClose}
+          ToBookReturn={this._toBookReturn} />
 
         <ListView
           dataSource={this.state.dataSource}

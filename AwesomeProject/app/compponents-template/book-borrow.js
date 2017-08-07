@@ -219,7 +219,7 @@ export default class BookList extends Component {
 
   render() {
     return (
-      <View style={Styles.borrow}>
+      <View key={Math.random()} style={Styles.borrow}>
         <ScrollView>
           <View style={Styles.container}>
             {

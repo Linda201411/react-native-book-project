@@ -7,7 +7,6 @@ import {
   ToastAndroid,
 } from 'react-native';
 import App from './app/app';
-import Camera from 'react-native-camera';
 
 export default class BookManagement extends Component {
   componentDidMount() {

@@ -3,6 +3,7 @@ import { AsyncStorage, ScrollView, StyleSheet, View, TouchableOpacity, Text } fr
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FormTextInput from '../components-cell/form-text-input'
 import BookCategory from './../compponents-template/book-category'
+import BookSearchResult from './../compponents-template/book-search-result'
 import storage from 'store2';
 import Styles from './style/book-search'
 
