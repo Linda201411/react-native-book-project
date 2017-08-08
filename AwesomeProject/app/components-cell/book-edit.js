@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 import { changeEditStatus } from '../actions/common.action'
 @connect((store) => {
     return {
-        EditStatus: store.commonReducer.EditStatus
+        EditStatus: store.commonReducer.EditStatus,
+        ResetStatus: store.commonReducer.ResetStatus,
     }
 })
 
@@ -21,6 +22,15 @@ export default class EditText extends Component {
         };
         storage.session('isEdit', this.state.isEdit);
     }
+    componentWillReceiveProps(nextProps) {
+        if (this.props.ResetStatus !== nextProps.ResetStatus) {
+            this.setState({
+                isEdit: false,
+                text: '编辑',
+            })
+        }
+    }
+
     _changeEdit = () => {
         if (this.state.isEdit) {
             this.setState({
