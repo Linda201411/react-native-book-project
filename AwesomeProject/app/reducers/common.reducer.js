@@ -4,7 +4,6 @@ export default function reducer(state = {
     ResetStatus: 0,
     globalCount:1
 }, action) {
-    debugger;
     switch (action.type) {
         case 'CHANGE_DATA':
             return {

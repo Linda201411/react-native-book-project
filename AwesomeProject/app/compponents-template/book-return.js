@@ -38,9 +38,9 @@ export default class BookReturn extends Component {
             disable: true
         };
     }
-    componentWillMount() {
-        this.props.dispatch(GetBookBorrowListByUserId(this.props.permission.UserName));
-    }
+    // componentWillMount() {
+    //     this.props.dispatch(GetBookBorrowListByUserId(this.props.permission.UserName));
+    // }
     componentWillReceiveProps(nextProps) {
         if (this.props.Flag !== nextProps.Flag) {
             this.setState({

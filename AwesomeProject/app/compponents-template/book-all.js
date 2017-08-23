@@ -57,7 +57,6 @@ export default class BookAll extends Component {
     this._search();
   }
   componentWillReceiveProps(nextProps) {
-    debugger;
     if (this.props.Flag !== nextProps.Flag) {
       this._search();
     }

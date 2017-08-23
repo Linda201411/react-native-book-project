@@ -10,6 +10,7 @@ import UserInfo from './user-info';
 import SystemManage from './system-manage';
 import Themes from './../src/themes/themes'
 import {changeData} from './../actions/common.action'
+import store from '../store'
 
 const styles = StyleSheet.create({
   tabbar: {
@@ -32,7 +33,10 @@ class TabBar extends Component {
     super(props);
   }
   _onChangeTab = (index) => {
+    debugger;
+    
     this.props.jumpToIndex(index);
+    store.dispatch(changeData())
   }
   render() {
     const {
