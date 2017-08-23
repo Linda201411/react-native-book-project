@@ -32,8 +32,6 @@ class TabBar extends Component {
     super(props);
   }
   _onChangeTab = (index) => {
-    debugger;
-    alert(1);
     this.props.jumpToIndex(index);
   }
   render() {
@@ -65,7 +63,6 @@ class TabBar extends Component {
                   focused,
                   tintColor
                 })}
-
               </View>
             </TouchableWithoutFeedback>
           );
@@ -97,7 +94,8 @@ const MainScreen = TabNavigator({
 }, {
     lazy: true,
     tabBarPosition: 'bottom',
-    tabBarComponent: TabBar
+    tabBarComponent: TabBar,
+    swipeEnabled: false
   });
 
 export default MainScreen;
