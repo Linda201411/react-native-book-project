@@ -32,7 +32,8 @@ import BookModal from './../components-cell/show-modal'
     BooKlistTotalPage: store.bookReducer.BooKlistTotalPage,
     Flag: store.commonReducer.Flag,
     permission: store.accountReducer.permission,
-    OverTimeCount: store.bookReturnReducer.OverTimeCount
+    OverTimeCount: store.bookReturnReducer.OverTimeCount,
+    initIndex: store.commonReducer.initIndex
   }
 })
 
@@ -57,7 +58,7 @@ export default class BookAll extends Component {
     this._search();
   }
   componentWillReceiveProps(nextProps) {
-    if (this.props.Flag !== nextProps.Flag) {
+    if (nextProps.initIndex == 1 && this.props.initIndex != nextProps.initIndex) {
       this._search();
     }
   }

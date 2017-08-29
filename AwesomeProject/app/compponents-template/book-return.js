@@ -25,7 +25,8 @@ import BookItem from './../components-cell/book-return-item'
     return {
         BookReturnListByUserId: store.bookReturnReducer.BookReturnListByUserId,
         permission: store.accountReducer.permission,
-        Flag: store.commonReducer.Flag
+        Flag: store.commonReducer.Flag,
+        initIndex: store.commonReducer.initIndex
     }
 })
 
@@ -42,11 +43,7 @@ export default class BookReturn extends Component {
     //     this.props.dispatch(GetBookBorrowListByUserId(this.props.permission.UserName));
     // }
     componentWillReceiveProps(nextProps) {
-        if (this.props.Flag !== nextProps.Flag) {
-            this.setState({
-                checkedAll: false,
-                sum: 0
-            });
+        if (nextProps.initIndex == 3 && this.props.initIndex != nextProps.initIndex) {
             this.props.dispatch(GetBookBorrowListByUserId(this.props.permission.UserName));
         }
     }

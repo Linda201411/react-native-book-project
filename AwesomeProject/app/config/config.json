@@ -1,6 +1,6 @@
 {
     "LoginAPIUrl": "http://116.211.7.158:6789",
-    "APIUrl": "http://192.168.1.116:8001",
+    "APIUrl": "http://192.168.19.100:8001",
     "ManageUserList": [
         {
             "userId": "tiany"

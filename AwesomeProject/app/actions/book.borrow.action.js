@@ -4,13 +4,15 @@ export function getBookBorrowList(obj) {
     return function (dispatch) {
         thaxios({
             url: 'collect/getCollectList?UserName=' + obj,
-            method: 'GET',
-            hideGlobalLoading: true
-            //params: obj
+            method: 'GET'
         }).then((res) => {
             dispatch({
                 type: 'GET_BOOK_BORROW_LIST',
-                payload: res.Datas
+                payload: {
+                    dataList:res.Datas,
+                    checkCount:0,
+                    checkedAll:true
+                }
             })
         });
     }
@@ -59,13 +61,18 @@ export function SureBorrowBook(obj) {
 }
 
 export function selectALL(datas) {
+    debugger;
+
     datas = datas.map(function (item, index) {
         item.isCheck = true;
         return item;
     });
     return {
         type: 'SELECT_ALL_BOOK_LIST',
-        payload: datas
+        payload: {
+            dataList:datas,
+            checkedAll:true
+        }
     }
 }
 

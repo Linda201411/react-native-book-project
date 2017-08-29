@@ -3,9 +3,6 @@ import { ScrollView, View, StyleSheet, Text, TouchableOpacity, TouchableHighligh
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class BookOperation extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <View style={styles.operation}>

@@ -14,14 +14,14 @@ import { connect } from 'react-redux';
 import { getBookBorrowList, BookBorrowList, selectALL, unSelectALL, SureBorrowBook, RemoveBookBorrowList } from '../actions/book.borrow.action'
 import { getPermission } from '../actions/account.action'
 import BookOperation from './../components-cell/book-operation'
-import { changeData } from '../actions/common.action'
+import { changeData, changeEditStatus, resetEditStatus } from '../actions/common.action'
 import Styles from './style/book-borrow'
 import { Toast, WhiteSpace, WingBlank, Button } from 'antd-mobile';
 import BookNoData from './../components-cell/book-nodata'
 import BookItem from './../components-cell/book-borrow-item'
 import storage from 'store2';
 import RNBottomSheet from 'react-native-bottom-sheet';
-import { changeEditStatus, resetEditStatus } from '../actions/common.action'
+
 @connect((store) => {
   return {
     BookBorrowList: store.bookBorrowReducer.BookBorrowList,
@@ -30,6 +30,8 @@ import { changeEditStatus, resetEditStatus } from '../actions/common.action'
     Flag: store.commonReducer.Flag,
     EditStatus: store.commonReducer.EditStatus,
     ResetStatus: store.commonReducer.ResetStatus,
+    bookBorrowModel: store.bookBorrowReducer.bookBorrowModel,
+    initIndex: store.commonReducer.initIndex
   }
 })
 
@@ -47,12 +49,8 @@ export default class BookList extends Component {
   //   this.props.dispatch(getBookBorrowList(this.props.permission.UserName));
   // }
   componentWillReceiveProps(nextProps) {
-    if (this.props.Flag !== nextProps.Flag) {
+    if (nextProps.initIndex == 2 && this.props.initIndex != nextProps.initIndex) {
       this.props.dispatch(getBookBorrowList(this.props.permission.UserName));
-      this.setState({
-        checkedAll: false,
-        sum: 0,
-      });
     }
 
     if (this.props.EditStatus !== nextProps.EditStatus) {
@@ -243,7 +241,7 @@ export default class BookList extends Component {
         <BookOperation
           isCheckAll={this.state.checkedAll}
           total={this.state.sum}
-          onCheckAll={this._onCheckAll}
+          onCheckAll={()=>{this.props.dispatch(selectALL(this.props.BookBorrowList))}}
           disabled={this.state.disable}
           onBorrowBook={this._onBorrowBook}
           lableColor={!this.state.isEdit ? "#E65100" : "#F50057"}

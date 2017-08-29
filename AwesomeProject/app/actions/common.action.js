@@ -7,12 +7,10 @@ export function changeData() {
     }
 }
 
-export function initData() {
+export function initData(index) {
     return {
         type: 'INIT_DATA',
-        payload: {
-            globalCount: 1
-        }
+        payload: index
     }
 }
 

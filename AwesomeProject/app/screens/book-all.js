@@ -85,11 +85,6 @@ export default class BookAll extends Component {
     //     size={20} />
     // </TouchableHighlight>
   });
-  componentWillReceiveProps(newProps) {
-    if (newProps.screenProps.route_index === 1) {
-      alert(1233);
-    }
-  }
   render() {
     return (
       <BookList navigation={this.props.navigation} />
